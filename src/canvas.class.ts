@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Subject } from 'rxjs';
 
-const predictUrl = `${process.env.api_url}/predict`;
+const predictUrl = `${process.env.API_URL}/predict`;
 
 export class Canvas {
   canvas: HTMLCanvasElement;
