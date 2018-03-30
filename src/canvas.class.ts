@@ -65,18 +65,19 @@ export class Canvas {
     this.isDrawing = false;
   }
 
-  predict(): void {
-    const imgd = this.ctx.getImageData(0, 0, this.realWidth, this.realWidth);
-    const pix = imgd.data;
-    const grayscaleImage = [];
+  predict(type): void {
+    const img = this.ctx.getImageData(0, 0, this.realWidth, this.realWidth);
+    const pix = img.data;
+    const grayScaleImage = [];
 
     for (let i = 0, n = pix.length; i < n; i += 4) {
-      grayscaleImage.push(pix[i + 3] / 255);
+      grayScaleImage.push(pix[i + 3] / 255);
     }
 
     axios.post(predictUrl, {
-      data: grayscaleImage,
-      scale: this.scale
+      data: grayScaleImage,
+      scale: this.scale,
+      type
     }).then(res => this.emitPrediction(res.data.prediction[0]));
   }
 

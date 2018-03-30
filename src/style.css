@@ -22,3 +22,7 @@ html, body {
 table {
   width: 100%;
 }
+
+button, select {
+  margin: 0.25rem;
+}

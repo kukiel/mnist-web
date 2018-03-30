@@ -1,12 +1,5 @@
 import * as React from 'react';
 
-export const ActionsPanel = ({predict, clear}) => {
-  return <div>
-    <button onClick={() => predict()}>Predict</button>
-    <button onClick={() => clear()}>Clear</button>
-  </div>
-};
-
 export const PredictionPanel = ({predicted, predictions = []}) => {
   return predictions.length ? <div>
     <h3>It's {predicted} ({predictions[predicted]}%)</h3>

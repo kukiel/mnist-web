@@ -2,7 +2,8 @@ import './style.css';
 import * as React from 'react';
 import { render } from 'react-dom'
 import { Canvas } from './canvas.class';
-import { ActionsPanel, PredictionPanel } from './components';
+import { ActionsPanel } from './components/ActionsPanel';
+import { PredictionPanel } from './components/PredictionsPanel';
 
 const canvasElement = document.querySelector('.canvas') as HTMLCanvasElement;
 const canvas = new Canvas(canvasElement, 28, 28, 3);
@@ -17,7 +18,7 @@ canvas.updateInfo$.subscribe((data: any) => {
 
 const Container = () => {
   return <div>
-    <ActionsPanel clear={clear} predict={() => canvas.predict()}/>
+    <ActionsPanel clear={clear} predict={type => canvas.predict(type)}/>
     <PredictionPanel predicted={predicted} predictions={predictions}/>
   </div>
 };
