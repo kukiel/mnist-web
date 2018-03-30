@@ -10,7 +10,7 @@ const canvas = new Canvas(canvasElement, 28, 28, 3);
 let predictions = undefined;
 let predicted = undefined;
 
-canvas.updateInfo$.subscribe((data: any) => {
+canvas.updatePrediction$.subscribe((data: any) => {
   predictions = data.predictions;
   predicted = data.predicted;
   renderDOM();

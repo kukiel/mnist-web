@@ -11,8 +11,8 @@ export class Canvas {
   scale: number;
   isDrawing: boolean = false;
 
-  private updateInfo = new Subject();
-  updateInfo$ = this.updateInfo.asObservable();
+  private updatePrediction = new Subject();
+  updatePrediction$ = this.updatePrediction.asObservable();
 
   constructor(canvasElement: HTMLCanvasElement, width: number, height: number, scale: number) {
     this.canvas = canvasElement;
@@ -84,7 +84,7 @@ export class Canvas {
   emitPrediction(predictions): void {
     const predicted = predictions.indexOf(Math.max.apply(null, predictions));
     const predictionsRounded = predictions.map(prediction => (prediction * 100).toFixed(2));
-    this.updateInfo.next({predicted, predictions: predictionsRounded})
+    this.updatePrediction.next({predicted, predictions: predictionsRounded})
   }
 
   getMousePosition(e): any {
